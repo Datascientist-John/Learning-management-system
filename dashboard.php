@@ -1,16 +1,10 @@
 <?php
 session_start();
-if(!isset($_SESSION['loggedin']) || $_SESSION['loggedin'] !==true) {
-    header("location: login.html");
-    exit;
-}
-?>
 
+// Check if user is logged in by verifying email session variable
 
-<?php
-session_start();
-if(!isset($_SESSION['loggedin']) || $_SESSION['loggedin'] !== true) {
-    header("location: login.html");
+if (!isset($_SESSION['email'])) {
+    header("Location: login.php"); // Redirect to login page (use login.php if that’s your login file)
     exit;
 }
 ?>
