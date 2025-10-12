@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Professional Registration</title>
+    <link rel="stylesheet" href="assets/css/styles.css">
+    
+</head>
+<body>
+
+    <div class="registration-container">
+        <h2>Enroll and Learn HSE Today</h2>
+        <form action="register.php" method="POST">
+            
+            <!-- Row for First Name and Last Name -->
+            <div class="form-row">
+                <div class="input-group">
+                    <label for="firstname">First Name</label>
+                    <input type="text" id="firstname" name="firstname" placeholder="John" required>
+                </div>
+                <div class="input-group">
+                    <label for="lastname">Last Name</label>
+                    <input type="text" id="lastname" name="lastname" placeholder="Doe" required>
+                </div>
+            </div>
+
+            <!-- Email and Password Fields -->
+            <div class="input-group">
+                <label for="email">Email Address</label>
+                <input type="email" id="email" name="email" placeholder="john.doe@example.com" required>
+            </div>
+            
+            <div class="input-group">
+                <label for="password">Password</label>
+                <input type="password" id="password" name="password" placeholder="Min. 8 characters" required>
+            </div>
+
+            <!-- Row for Gender and Date of Birth -->
+            <div class="form-row">
+                <div class="input-group">
+                    <label for="gender">Gender</label>
+                    <select id="gender" name="gender" required>
+                        <option value="" disabled selected>Select...</option>
+                        <option value="male">Male</option>
+                        <option value="female">Female</option>
+                        <option value="other">Other</option>
+                        <option value="pnts">Prefer not to say</option>
+                    </select>
+                </div>
+                <div class="input-group">
+                    <label for="dob">Date of Birth</label>
+                    <input type="date" id="dob" name="dob" required>
+                </div>
+            </div>
+
+            <button type="submit" class="register-button">Register Now</button>
+        </form>
+
+        <p class="login-link">
+            Already have an account? <a href="#">Sign In</a>
+        </p>
+    </div>
+
+</body>
+</html>

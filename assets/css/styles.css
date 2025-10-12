@@ -1,0 +1,324 @@
+
+        /* Base styles for a clean, professional look */
+        body {
+            font-family: 'Inter', sans-serif;
+            /* Changed background to a soft, cool blue-grey for a lighter, more vibrant feel */
+            background-color: #edf2f7; 
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+            padding: 20px;
+            box-sizing: border-box;
+        }
+
+        /* The main container for the registration card */
+        .registration-container {
+            width: 100%;
+            max-width: 500px;
+            background-color: #ffffff;
+            padding: 40px;
+            border-radius: 16px; /* Slightly more rounded corners */
+            box-shadow: 0 12px 40px rgba(0, 0, 0, 0.1); /* Enhanced, cleaner shadow */
+            transition: transform 0.3s ease;
+        }
+        
+        /* Heading style */
+        .registration-container h2 {
+            text-align: center;
+            color: #1a202c;
+            margin-bottom: 30px;
+            font-size: 2.2rem; /* Slightly larger heading */
+            font-weight: 700;
+        }
+
+        /* Layout for name fields to be side-by-side on desktop */
+        .form-row {
+            display: flex;
+            gap: 20px;
+            margin-bottom: 25px;
+        }
+        
+        /* Group for form elements */
+        .input-group {
+            flex-grow: 1;
+        }
+
+        /* Label styling */
+        .input-group label {
+            display: block;
+            margin-bottom: 8px;
+            color: #4a5568;
+            font-size: 0.9rem;
+            font-weight: 500;
+        }
+
+        /* Input/Select/Date field styling */
+        .input-group input:not([type="checkbox"]),
+        .input-group select {
+            width: 100%;
+            padding: 12px 15px;
+            border: 1px solid #c9d6e4; /* Slightly softer border color */
+            border-radius: 10px; /* Slightly more rounded inputs */
+            box-sizing: border-box;
+            font-size: 1rem;
+            color: #2d3748;
+            appearance: none;
+            transition: border-color 0.3s, box-shadow 0.3s;
+        }
+        
+        /* Specific styling for Date of Birth input to match others */
+        .input-group input[type="date"] {
+            font-family: 'Inter', sans-serif;
+            line-height: 1.5;
+        }
+
+        /* Focus effect for inputs and select - now uses a vibrant green */
+        .input-group input:focus,
+        .input-group select:focus {
+            border-color: #00c853; /* Vibrant success green highlight on focus */
+            outline: none;
+            /* Subtle, colorful glow */
+            box-shadow: 0 0 0 4px rgba(0, 200, 83, 0.2); 
+        }
+
+        /* Submit button styling - uses a vibrant green with a subtle gradient */
+        .register-button {
+            width: 100%;
+            padding: 15px;
+            /* Vibrant green gradient for an attractive look */
+            background-image: linear-gradient(135deg, #00c853 0%, #00a042 100%);
+            color: white;
+            border: none;
+            border-radius: 10px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            margin-top: 15px;
+            box-shadow: 0 4px 15px rgba(0, 200, 83, 0.4); /* Colored shadow for lift */
+            transition: all 0.2s ease;
+        }
+
+        /* Hover and active effects for the button */
+        .register-button:hover {
+            box-shadow: 0 6px 20px rgba(0, 200, 83, 0.5); /* Stronger shadow on hover */
+            transform: translateY(-2px);
+        }
+        .register-button:active {
+            transform: translateY(0);
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+        }
+
+        /* Footer link for existing users - uses the vibrant green for links */
+        .login-link {
+            text-align: center;
+            margin-top: 25px;
+            font-size: 0.9rem;
+            color: #4a5568;
+        }
+
+        .login-link a {
+            color: #00c853; /* Link color matches accent */
+            text-decoration: none;
+            font-weight: 600;
+            transition: color 0.2s;
+        }
+
+        .login-link a:hover {
+            color: #00a042;
+            text-decoration: underline;
+        }
+
+        /* Responsive adjustments for smaller screens */
+        @media (max-width: 600px) {
+            .registration-container {
+                padding: 30px 25px;
+            }
+            .form-row {
+                flex-direction: column;
+                gap: 0;
+            }
+            .input-group {
+                margin-bottom: 20px;
+            }
+        }
+
+
+
+/*===LOG OUT STYLES=== */
+
+.logout-link {
+    color: #007bff;
+    font-weight: 600;
+    text-decoration: none;
+}
+.logout-link:hover {
+    text-decoration: underline;
+}
+
+/*===regitration form HSE Styles===*/
+
+.registration-container {
+  width: 400px;
+  margin: 50px auto;
+  padding: 20px;
+  background-color: #ffffff;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  font-family: Arial, sans-serif;
+}
+
+.registration-container h2 {
+  text-align: center;
+  color: #6a1b9a; /* purple */
+}
+
+.register-button {
+  width: 100%;
+  padding: 10px;
+  background-color: #ff6f00; /* orange */
+  border: none;
+  border-radius: 5px;
+  color: white;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+.register-button:hover {
+  background-color: #e65100;
+}
+
+/* ===== Input Group Styles ===== */
+.input-group {
+  margin-bottom: 15px;
+  display: flex;
+  flex-direction: column;
+}
+
+.input-group label {
+  margin-bottom: 5px;
+  font-weight: bold;
+  color: #333;
+}
+
+.input-group input,
+.input-group select {
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-size: 14px;
+}
+/* ===== Button Styling ===== */
+.register-button {
+  width: 100%;
+  padding: 10px;
+  background-color: #ff6f00; /* orange */
+  border: none;
+  border-radius: 5px;
+  color: white;
+  font-size: 16px;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+.register-button:hover {
+  background-color: #e65100;
+}
+
+/* ===== Login Link Styling ===== */
+.login-link {
+  text-align: center;
+  margin-top: 15px;
+  font-size: 14px;
+  color: #555;
+}
+
+.login-link a {
+  color: #6a1b9a; /* purple */
+  font-weight: bold;
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+.login-link a:hover {
+  color: #ff6f00; /* orange */
+  text-decoration: underline;
+}
+
+ /* Dashboard Layout */
+        body {
+            margin: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f5f7fb;
+            display: flex;
+            height: 100vh;
+            overflow: hidden;
+        }
+
+        /* Sidebar */
+        .sidebar {
+            width: 240px;
+            background-color: #2b3a67;
+            color: white;
+            display: flex;
+            flex-direction: column;
+            padding: 20px 0;
+        }
+
+        .logo {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .logo img {
+            width: 100px;
+            border-radius: 50%;
+        }
+
+        .sidebar a {
+            color: white;
+            text-decoration: none;
+            padding: 15px 25px;
+            display: block;
+            transition: background 0.3s ease;
+        }
+
+        .sidebar a:hover {
+            background-color: #3d4f88;
+        }
+
+        /* Top Navigation Bar */
+        .topbar {
+            height: 60px;
+            background-color: white;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 20px;
+            position: fixed;
+            left: 240px;
+            right: 0;
+            top: 0;
+        }
+
+        .topbar h2 {
+            color: #333;
+            margin: 0;
+            font-size: 20px;
+        }
+
+        .topbar .user {
+            font-weight: 500;
+            color: #2b3a67;
+        }
+
+        /* Main Content Area */
+        .content {
+            margin-top: 60px;
+            margin-left: 240px;
+            padding: 30px;
+            overflow-y: auto;
+            width: calc(100% - 240px);
+        }
