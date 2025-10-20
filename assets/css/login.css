@@ -1,18 +1,24 @@
+
+ /* Base styles for a clean, professional look */
+        body {
+           
+            /* Changed background to a soft, cool blue-grey for a lighter, more vibrant feel */
+            background-color: #9ce7b4; 
+       
+            justify-content: center;
+            align-items: center;
+        }
 .login-container {
     max-width: 400px;
     margin: 80px auto;
-    padding: 30px 40px;
-    background-color: #ffffff;
+    padding: 8px 8px;
+    background-color: #4adc7b;
     border-radius: 15px;
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
     text-align: center;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
-.login-container h2 {
-    color: #333;
-    margin-bottom: 25px;
-}
 
 .login-container .input-group {
     margin-bottom: 20px;
@@ -29,7 +35,7 @@
 .login-container input[type="email"],
 .login-container input[type="password"] {
     width: 100%;
-    padding: 12px 15px;
+    padding: 5px 5px;
     border: 1px solid #ccc;
     border-radius: 8px;
     font-size: 15px;
@@ -44,7 +50,7 @@
 
 .login-container .register-button {
     width: 100%;
-    padding: 12px;
+    padding: 8px;
     background-color: #007bff;
     color: white;
     border: none;
@@ -72,4 +78,17 @@
 
 .login-container .login-link a:hover {
     text-decoration: underline;
+}
+
+ .login-logo {
+    /* 1. Sizing the logo */
+    width: 100px; 
+    height: auto; 
+    
+    /* 2. Positioning the logo */
+    display: block; 
+    margin: 0 auto 30px auto;
+    
+    /* 3. Styling the logo (Optional) */
+    border-radius: 50%; 
 }

@@ -7,11 +7,68 @@ error_reporting(E_ALL);
 
 require_once 'config/db_config.php';
 
-$error = '';
 
 if ($_SERVER["REQUEST_METHOD"] === "POST") {
     $email = trim($_POST['email'] ?? '');
     $password = trim($_POST['password'] ?? '');
+
+
+
+// Check if the user exists
+    $stmt = $conn->prepare("SELECT * FROM students WHERE email = ?");
+    $stmt->bind_param("s", $email);
+    $stmt->execute();
+    $result = $stmt->get_result();
+
+    if ($result->num_rows === 1) {
+        $row = $result->fetch_assoc();
+
+        // ✅ 1. Check if email is verified
+        if ($row['email_verified'] == 0) {
+            echo "<script>
+                    alert('Please verify your email before logging in.');
+                    window.location='verify_email.php';
+                  </script>";
+            exit;
+        }
+
+        // ✅ 2. (Optional) Check if account is active
+        if (isset($row['active']) && $row['active'] == 0) {
+            echo "<script>
+                    alert('Account suspended. Contact admin.');
+                    window.location='login.php';
+                  </script>";
+            exit;
+        }
+
+        // ✅ 3. Verify password
+        if (password_verify($password, $row['password'])) {
+            // Login successful
+            $_SESSION['sid'] = $row['sid'];
+            $_SESSION['firstname'] = $row['firstname'];
+            $_SESSION['email'] = $row['email'];
+
+            echo "<script>
+                    alert('Login successful!');
+                    window.location='dashboard.php';
+                  </script>";
+        } else {
+            echo "<script>
+                    alert('Invalid password.');
+                    window.location='login.php';
+                  </script>";
+        }
+    } else {
+        echo "<script>
+                alert('Email not found.');
+                window.location='login.php';
+              </script>";
+    }
+
+
+
+
+
 
     if (empty($email) || empty($password)) {
         $error = "Please enter both email and password.";
@@ -48,53 +105,3 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
 $conn->close();
 ?>
 
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Login - HSE Portal</title>
-    <link rel="icon" href="assets/img/hse.png" />
-    <link rel="stylesheet" href="assets/css/styles.css" />
-</head>
-<body>
-    <div class="registration-container">
-        <h2>Welcome Back</h2>
-
-        <?php if (!empty($error)) : ?>
-            <p style="color: red;"><?php echo htmlspecialchars($error); ?></p>
-        <?php endif; ?>
-
-        <form action="login.php" method="POST">
-            <div class="input-group">
-                <label for="email">Email Address</label>
-                <input
-                    type="email"
-                    id="email"
-                    name="email"
-                    placeholder="you@example.com"
-                    required
-                    value="<?php echo htmlspecialchars($_POST['email'] ?? ''); ?>"
-                />
-            </div>
-
-            <div class="input-group">
-                <label for="password">Password</label>
-                <input
-                    type="password"
-                    id="password"
-                    name="password"
-                    placeholder="Enter your password"
-                    required
-                />
-            </div>
-
-            <button type="submit" class="register-button">Login</button>
-        </form>
-
-        <p class="login-link">
-            Don’t have an account? <a href="register.html">Register Here</a>
-        </p>
-    </div>
-</body>
-</html>

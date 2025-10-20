@@ -3,37 +3,37 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Professional Registration</title>
+    <title>HSE & Quality LMS | Compliance Training & Risk Management Software</title>
     <link rel="stylesheet" href="assets/css/styles.css">
     
 </head>
 <body>
 
     <div class="registration-container">
-        <h2>Enroll and Learn HSE Today</h2>
+        <h2>HSE & Quality LMS: Enroll and Learn Today</h2>
         <form action="register.php" method="POST">
             
             <!-- Row for First Name and Last Name -->
             <div class="form-row">
                 <div class="input-group">
                     <label for="firstname">First Name</label>
-                    <input type="text" id="firstname" name="firstname" placeholder="John" required>
+                    <input type="text" id="firstname" name="firstname"required>
                 </div>
                 <div class="input-group">
                     <label for="lastname">Last Name</label>
-                    <input type="text" id="lastname" name="lastname" placeholder="Doe" required>
+                    <input type="text" id="lastname" name="lastname"required>
                 </div>
             </div>
 
             <!-- Email and Password Fields -->
             <div class="input-group">
                 <label for="email">Email Address</label>
-                <input type="email" id="email" name="email" placeholder="john.doe@example.com" required>
+                <input type="email" id="email" name="email" autocomplete="new-email" required>
             </div>
             
             <div class="input-group">
                 <label for="password">Password</label>
-                <input type="password" id="password" name="password" placeholder="Min. 8 characters" required>
+                <input type="password" id="password" name="password" autocomplete="new-password" required>
             </div>
 
             <!-- Row for Gender and Date of Birth -->
@@ -54,11 +54,16 @@
                 </div>
             </div>
 
+            <div class="honeypot-field">
+    <label for="sapien-check">Leave this field empty</label>
+    <input type="text" name="sapien-check" id="sapien-check" autocomplete="off" tabindex="-1">
+</div>
+
             <button type="submit" class="register-button">Register Now</button>
         </form>
 
         <p class="login-link">
-            Already have an account? <a href="#">Sign In</a>
+            Already have an account? <a href="login.html">Sign In</a>
         </p>
     </div>
 

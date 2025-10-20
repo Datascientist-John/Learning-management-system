@@ -1,0 +1,210 @@
+/* Dashboard Layout */
+        body {
+            margin: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f5f7fb;
+            display: flex;
+            height: 100vh;
+            overflow: hidden;
+        }
+
+        /* Sidebar */
+        .sidebar {
+            width: 240px;
+            background-color: #2b3a67;
+            color: white;
+            display: flex;
+            flex-direction: column;
+            padding: 20px 0;
+        }
+
+        .logo {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .logo img {
+            width: 100px;
+            border-radius: 50%;
+        }
+
+        .sidebar a {
+            color: white;
+            text-decoration: none;
+            padding: 15px 25px;
+            display: block;
+            transition: background 0.3s ease;
+        }
+
+        .sidebar a:hover {
+            background-color: #3d4f88;
+        }
+
+        /* Top Navigation Bar */
+        .topbar {
+            height: 60px;
+            background-color: white;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 20px;
+            position: fixed;
+            left: 240px;
+            right: 0;
+            top: 0;
+        }
+
+        .topbar h2 {
+            color: #333;
+            margin: 0;
+            font-size: 20px;
+        }
+
+        .topbar .user {
+            font-weight: 500;
+            color: #2b3a67;
+        }
+
+        /* Main Content Area */
+        .content {
+            margin-top: 60px;
+            margin-left: 240px;
+            padding: 30px;
+            overflow-y: auto;
+            width: calc(100% - 240px);
+        }
+
+
+        :root{
+  --page-bg: #f6f7fb;
+  --section-bg: #ffffff;
+  --card-bg: #ffffff;
+  --accent: #0f7ef1;
+  --text: #172026;
+  --muted: #6b7280;
+  --shadow: 0 6px 18px rgba(17,24,39,0.06);
+  --radius: 12px;
+}
+
+/* Container */
+.blog-section{
+  max-width: 100%;
+  margin: 28px auto;
+  padding: 24px;
+  background: linear-gradient(180deg, rgba(255,255,255,0.6), rgba(255,255,255,0.9));
+  border-radius: 14px;
+  box-shadow: var(--shadow);
+  display: block;
+}
+
+/* Section title */
+.blog-section > h2{
+  font-size: 1.35rem;
+  margin: 0 0 18px 0;
+  color: var(--text);
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  letter-spacing: -0.2px;
+}
+
+/* Grid layout for posts */
+.blog-section{
+  /* keep space under the header for grid */
+  padding-bottom: 26px;
+}
+
+.blog-section .posts-grid {
+  display: flex;
+  flex-wrap: nowrap; /* keep all cards in one row */
+  gap: 18px;         /* space between cards */
+  overflow-x: auto;  /* horizontal scroll if they overflow */
+  padding-bottom: 10px;
+}
+
+/* Card style */
+.blog-post{
+  background: var(--card-bg);
+  border-radius: var(--radius);
+  padding: 18px;
+  box-shadow: 0 4px 12px rgba(17,24,39,0.04);
+  transition: transform 220ms ease, box-shadow 220ms ease;
+  border: 1px solid rgba(17,24,39,0.03);
+}
+
+/* Hover / focus lift */
+.blog-post:hover,
+.blog-post:focus-within{
+  transform: translateY(-6px);
+  box-shadow: 0 12px 30px rgba(17,24,39,0.08);
+}
+
+/* Headings & text */
+.blog-post h3{
+  margin: 0 0 8px 0;
+  font-size: 1.05rem;
+  color: var(--text);
+  line-height: 1.25;
+}
+
+.blog-post p{
+  margin: 0 0 12px 0;
+  color: var(--muted);
+  font-size: 0.95rem;
+  line-height: 1.45;
+}
+
+/* Read more link styled as a subtle button */
+.blog-post a{
+  display: inline-block;
+  text-decoration: none;
+  padding: 8px 12px;
+  border-radius: 10px;
+  background: transparent;
+  color: var(--accent);
+  font-weight: 600;
+  border: 1px solid transparent;
+  transition: background 180ms ease, color 180ms ease, transform 160ms ease;
+}
+
+.blog-post a:hover,
+.blog-post a:focus{
+  background: rgba(15,126,241,0.08);
+  color: var(--accent);
+  transform: translateY(-2px);
+  outline: none;
+}
+
+/* Make sure keyboard focus is visible */
+.blog-post a:focus{
+  box-shadow: 0 0 0 4px rgba(15,126,241,0.12);
+  border-color: rgba(15,126,241,0.14);
+}
+
+/* Responsive grid: switch to columns on wider screens */
+@media (min-width: 720px){
+  .blog-section .posts-grid{
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (min-width: 1024px){
+  .blog-section .posts-grid{
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+/* Optional: small visual for the section header emoji spacing */
+.blog-section > h2 svg,
+.blog-section > h2 .emoji{
+  font-size: 1.25rem;
+  line-height: 1;
+}
+
+/* Utility: if you want tighter cards in a dark page */
+.dark-mode .blog-post{
+  background: #0f1724;
+  color: #e6eef8;
+  border-color: rgba(255,255,255,0.03);
+}
