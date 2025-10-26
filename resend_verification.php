@@ -11,23 +11,26 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     }
 
     // Check if email exists
-    $stmt = $conn->prepare("SELECT * FROM students WHERE email = ?");
+    $stmt = $conn->prepare("SELECT * FROM users WHERE email = ?");
     $stmt->bind_param("s", $email);
     $stmt->execute();
     $result = $stmt->get_result();
 
     if ($result->num_rows === 1) {
+        $row = $result->fetch_assoc();
+        $firstname = $row['first_name'];
+
         $newToken = random_int(100000, 999999); // 6-digit code
 
         // Update token in database
-        $update = $conn->prepare("UPDATE students SET token = ? WHERE email = ?");
-        $update->bind_param("is", $newToken, $email);
+        $update = $conn->prepare("UPDATE users SET token = ? WHERE email = ?");
+        $update->bind_param("ss", $newToken, $email);
 
         if ($update->execute()) {
             // Prepare verification link and email content
             $link = "https://johnnjoroge.eagletechafrica.com/verify_email.php?token=$newToken";
             $subject = "Resend Verification - QHSE LMS";
-            $message = "Hi, here is your new verification code: $newToken\n\nClick below to verify:\n$link";
+            $message = "Hi, $firstname, \n\Here is your new verification code: $newToken\n\nClick below to verify:\n$link";
 
             // Send email
             if (mail($email, $subject, $message)) {

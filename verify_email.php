@@ -10,7 +10,7 @@ if (isset($_GET['token'])) {
     $token = htmlspecialchars(trim($_GET['token']));
 
     // Use prepared statement to avoid SQL injection
-    $stmt = $conn->prepare("SELECT sid FROM students WHERE token = ? LIMIT 1");
+    $stmt = $conn->prepare("SELECT user_id FROM users WHERE token = ? LIMIT 1");
     $stmt->bind_param("s", $token);
     $stmt->execute();
     $result = $stmt->get_result();
@@ -18,7 +18,7 @@ if (isset($_GET['token'])) {
     // If token exists
     if ($result->num_rows > 0) {
         // Update user as verified
-        $update = $conn->prepare("UPDATE students SET email_verified = 1, token = NULL WHERE token = ?");
+        $update = $conn->prepare("UPDATE users SET email_verified = 1, token = NULL WHERE token = ?");
         $update->bind_param("s", $token);
         $update->execute();
 

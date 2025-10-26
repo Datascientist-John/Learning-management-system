@@ -32,7 +32,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     }
 
     // Check if email already exists
-    $check = $conn->prepare("SELECT sid FROM students WHERE email = ?");
+    $check = $conn->prepare("SELECT user_id FROM users WHERE email = ?");
     $check->bind_param("s", $email);
     $check->execute();
     $check->store_result();
@@ -50,9 +50,11 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     // Generate verification data
     $token = rand(100000, 999999);
     $email_verified = 0;
+    $role = 'student'; //Default role
+    $active = 1; // Default active status
 
-    // ✅ Corrected INSERT query (8 columns, 8 placeholders)
-    $stmt = $conn->prepare("INSERT INTO students (firstname, lastname, email, password, gender, dob, token, email_verified) VALUES (?, ?, ?, ?, ?, ?, ?, ?)");
+    // Updated INSERT query (8 columns, 8 placeholders)
+    $stmt = $conn->prepare("INSERT INTO users (firs_tname, last_name, email, password, gender, dob, token, email_verified) VALUES (?, ?, ?, ?, ?, ?, ?, ?)");
     $stmt->bind_param("ssssssii", $firstname, $lastname, $email, $password, $gender, $dob, $token, $email_verified);
 
     if ($stmt->execute()) {

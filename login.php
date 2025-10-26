@@ -15,7 +15,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
 
 
 // Check if the user exists
-    $stmt = $conn->prepare("SELECT * FROM students WHERE email = ?");
+    $stmt = $conn->prepare("SELECT * FROM users WHERE email = ?");
     $stmt->bind_param("s", $email);
     $stmt->execute();
     $result = $stmt->get_result();
@@ -32,7 +32,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
             exit;
         }
 
-        // ✅ 2. (Optional) Check if account is active
+         // ✅ 2. Check if account is active
         if (isset($row['active']) && $row['active'] == 0) {
             echo "<script>
                     alert('Account suspended. Contact admin.');
@@ -44,9 +44,53 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
         // ✅ 3. Verify password
         if (password_verify($password, $row['password'])) {
             // Login successful
-            $_SESSION['sid'] = $row['sid'];
-            $_SESSION['firstname'] = $row['firstname'];
+            $_SESSION['user_id'] = $row['user_id'];
+            $_SESSION['first_name'] = $row['first_name'];
+            $_SESSION['last_name'] = $row['last_name'];
             $_SESSION['email'] = $row['email'];
+            $_SESSION['role'] = $row['role'];
+            $_SESSION['logged_in'] = true;
+
+
+            // ✅ 4. Redirect based on role
+            if ($row['role'] == 'admin') {
+                echo "<script>
+                        alert('Welcome Admin!');
+                        window.location='admin/admin-dashboard.php';
+                      </script>";
+            } elseif ($row['role'] == 'instructor') {
+                echo "<script>
+                        alert('Welcome Instructor!');
+                        window.location='instructor/instructor-dashboard.php';
+                      </script>";
+            } else {
+                // Default to student dashboard
+                echo "<script>
+                        alert('Login successful!');
+                        window.location='student/student-dashboard.php';
+                      </script>";
+            }
+        } else {
+            echo "<script>
+                    alert('Invalid password.');
+                    window.location='login.php';
+                  </script>";
+        }
+    } else {
+        echo "<script>
+                alert('Email not found.');
+                window.location='login.php';
+              </script>";
+    }
+    
+    $stmt->close();
+}
+?>
+
+
+
+
+
 
             echo "<script>
                     alert('Login successful!');
